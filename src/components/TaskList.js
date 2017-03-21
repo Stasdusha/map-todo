@@ -21,7 +21,7 @@ const setCurentTask =()=>{
          { props.newTask ? <NewTask setCurentTask={setCurentTask}/> :"" }
          { props.tasks.map((task, index)=>{
            return(
-           <Task key={index} description={task.description} marker={task.marker}/>
+           <Task key={index} task={task}/>
            )})}
        </div>
    );
@@ -30,6 +30,7 @@ const setCurentTask =()=>{
 
 export default connect(state => ({
     newTask: !!state.curentMarker.latLng,
+    curentTask: state.curentTask,
     tasks  : state.tasks
   }),
     dispatch => ({

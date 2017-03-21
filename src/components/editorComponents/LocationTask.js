@@ -4,7 +4,7 @@ const LocationTask =(props)=> {
 
   return (
        <div className='location-task'>
-         <div>LOCATION</div>
+         <div className='title-block'>LOCATION</div>
          <div>{props.adress}</div>
        </div>
    );

@@ -2,15 +2,15 @@ import React from "react";
 
 const ResultTask =(props)=> {
 
-console.log(props);
-
-const description = props.task.description;
 
   return (
        <div className='result-task'>
-         <div>NEW TASK</div>
-         <div>{ description }</div>
-         <button onClick={ props.createTask }>CREATE</button>
+         <div className='title-block'>NEW TASK</div>
+         <div className='task-info' >I need a { props.task.serviceType } to { props.task.adittionType }
+         { props.task.description ? ', ' : ''}
+         { props.task.description }. </div>
+        <div>My adress is { props.adress }</div>
+        <button className="button-blue" onClick={ props.createTask }>CREATE TASK</button>
        </div>
    );
 }

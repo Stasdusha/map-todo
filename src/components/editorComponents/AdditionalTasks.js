@@ -8,7 +8,7 @@ const AdditionalTasks =(props)=> {
           <div className='plumber-task-container'>
              {props.adittionTypeArr.map((type, index)=>{
                return (
-                 <div className={"plumber-task-item" + type === props.type ? 'active': ''}
+                 <div className="plumber-task-item"
                    key={index}>{type}</div>
                )
              })}

@@ -3,14 +3,13 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: sans-serif;
 }
 html{
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: sans-serif;
+  font-family: Roboto;
 }
 header{
     height: 80px;
@@ -20,7 +19,6 @@ header{
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: sans-serif;
 }
 .map{
   margin: 0;
@@ -39,8 +37,24 @@ header{
 }
 .task-editor{
   width: 650px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(25, 0, 0, 0);
+}
+.task-editor .title-block{
+  color: #909090;
+  font-size: 14.0px;
+}
+.task-editor .task-info{
+    color: #191a1f;
+    font-family: "SFNSDisplay";
+    font-size: 24px;
+}
+.task-editor .button-blue{
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
 }
 .task-list{
   margin: 10px 40px;
@@ -58,12 +72,15 @@ header{
   background: #ffffff;
   box-shadow: 0px 1px 2px rgba(75, 0, 0, 0.3);
   border-radius: 4px;
+  color: #4c70fe;
 }
 .new-task-text{
   margin: auto;
 }
 .result-task{
-  /*width: 100%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 180px;
   padding: 25px 40px;
   background: #f0f0f0;
@@ -103,11 +120,40 @@ header{
 }
 .task{
   display: flex;
-  /*height: px;*/
-  width: 330px;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 20px;
+  width: 290px;
   background: #ffffff;
   box-shadow: 0px 1px 2px rgba(75, 0, 0, 0.3);
   border-radius: 4px;
+}
+.task-date{
+  font-weight: 400;
+  color: #909090;
+}
+.task-info{
+  margin: 15px 0px 20px;
+  color: #191a1f;
+  font-family: "SFNSDisplay";
+  font-size: 20px;
+  font-weight: 400
+}
+.button-blue{
+  border-radius: 4px;
+  background-color: #4c70fe;
+  color: white;
+  border: none;
+}
+.task .button-blue{
+  margin-right: 10px;
+  width: 50px;
+  height: 30px;
+}
+.button-wite{
+  border: none;
+  color: #4c70fe;
+  background-color: white;
 }
 .task-description > textarea{
   height: 100%;

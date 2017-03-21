@@ -8,7 +8,7 @@ const change =()=>{
 }
   return (
        <div className='task-description'>
-         <div>TASK DESCRIPTION</div>
+         <div className='title-block'>TASK DESCRIPTION</div>
          <textarea id="desc" onChange={change}  maxLength="100"/>
        </div>
    );

@@ -6,7 +6,7 @@ const typeArr = props.typeArr;
 
   return (
        <div className='service-task'>
-        <div>SERVICE TYPE</div>
+        <div className='title-block'>SERVICE TYPE</div>
         <div className='image-container'>
           {typeArr.map((obj, index)=>{
             return(<div key={ index } className='image-item' onClick={() => props.setServiceType(obj.name)}>

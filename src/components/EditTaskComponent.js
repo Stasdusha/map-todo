@@ -18,12 +18,16 @@ const EditTaskComponent =(props)=> {
 
   const createNewTask =()=>{
     const newTask = props.curentTask;
-    newTask.marcer = props.curentMarker;
+    newTask.id = props.tasks.length + 1;
+    newTask.marker = props.curentMarker;
+    newTask.date = new Date();
     props.createTask(newTask);
+    props.setTask({});
   };
 
   const setServiceType = (type) =>{
     props.setServiceType(type);
+    props.setAdittionType(structs.adittionType[props.curentTask.serviceType][0]);
   };
 
   const changeDescription =(desc)=>{
@@ -36,7 +40,8 @@ const EditTaskComponent =(props)=> {
 
   return (
        <div className="task-editor">
-         <ResultTask createTask={ createNewTask } task={ props.curentTask } />
+         <ResultTask createTask={ createNewTask } task={ props.curentTask }
+           adress={ props.curentMarker.adress }/>
          <LocationTask adress={ props.curentMarker.adress }/>
          <Line/>
          <ServiceType typeArr={ structs.typeArr } setServiceType={ setServiceType }
@@ -45,7 +50,7 @@ const EditTaskComponent =(props)=> {
          <AdditionalTasks adittionTypeArr={ structs.adittionType[props.curentTask.serviceType] }
             setAdittionType={ setAdittionType }
             serviceType={ props.curentTask.serviceType }
-            adittionType = {props.curentTask.adittionType}/>
+            adittionType={ props.curentTask.adittionType }/>
          <Line/>
          <TaskDescription changeDescription={ changeDescription }/>
          <Line/>
@@ -56,6 +61,7 @@ const EditTaskComponent =(props)=> {
 export default connect(state => ({
     curentMarker: state.curentMarker,
     curentTask: state.curentTask,
+    tasks: state.tasks
   }),
     dispatch => ({
     setTask: (task) => {
