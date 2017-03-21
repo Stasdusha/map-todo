@@ -9,8 +9,9 @@ const typeArr = props.typeArr;
         <div className='title-block'>SERVICE TYPE</div>
         <div className='image-container'>
           {typeArr.map((obj, index)=>{
-            return(<div key={ index } className='image-item' onClick={() => props.setServiceType(obj.name)}>
-                    <div className='image-item' >
+            return(<div key={ index } className='service-type-item'  onClick={() => props.setServiceType(obj.name)}>
+                    <div className={'image-item' + (obj.name === props.serviceType ? ' active' : '')} >
+                      {obj.name === props.serviceType}
                       <img src={ obj.src } alt=""/>
                     </div>
                     <div className='image-description'>{obj.name}</div>

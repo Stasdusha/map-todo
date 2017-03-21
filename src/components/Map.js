@@ -11,12 +11,13 @@ const marker = new props.googleMaps.Marker({ icon : icon });
 
   if(props.curentMarker.latLng){
     marker.setPosition(props.curentMarker.latLng);
-  }
+    console.log(marker);
+    }
 
   const addMarker = (event, map) => {
     marker.setPosition(event.latLng);
-    props.setLatLng(event.latLng)
-
+    props.setLatLng(event.latLng);
+    console.log(props);
   };
 
   return(<GoogleMap
@@ -25,11 +26,11 @@ const marker = new props.googleMaps.Marker({ icon : icon });
               zoom={ZOOM}
               disableDefaultUI={true}
               onLoaded={(googleMaps, map) => {
-                map.setMapTypeId(props.googleMaps.MapTypeId.ROADMAP)
+                map.setMapTypeId(props.googleMaps.MapTypeId.ROADMAP);
                 marker.setMap(map);
                 props.googleMaps.event.addListener(map, "click", (event) => addMarker(event, map));
               }}
-          />)
+              />)
 }
 
 Map.propTypes = {

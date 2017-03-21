@@ -25,7 +25,7 @@ import getAdress from './../services/locationDetrminer';
     <div className='app-container'>
       <Header/>
       <div className='map-container'>
-          <Map curentMarker={props.curentMarker} setLatLng={setLatLng}/>
+          <Map curentMarker={ props.curentMarker } setLatLng={setLatLng}/>
           <TaskList/>
           {props.canEditTask ? <EditTaskComponent/> : ''}
       </div>

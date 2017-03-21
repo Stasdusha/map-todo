@@ -27,7 +27,7 @@ const EditTaskComponent =(props)=> {
 
   const setServiceType = (type) =>{
     props.setServiceType(type);
-    props.setAdittionType(structs.adittionType[props.curentTask.serviceType][0]);
+    props.setAdittionType(structs.adittionType[type][0]);
   };
 
   const changeDescription =(desc)=>{

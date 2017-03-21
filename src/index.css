@@ -46,10 +46,12 @@ header{
   color: #909090;
   font-size: 14.0px;
 }
-.task-editor .task-info{
+.task-editor .result-info{
     color: #191a1f;
     font-family: "SFNSDisplay";
     font-size: 24px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 .task-editor .button-blue{
     width: 150px;
@@ -81,24 +83,24 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 180px;
+  min-height: 180px;
   padding: 25px 40px;
   background: #f0f0f0;
 }
 .location-task{
-  height: 30px;
+  min-height: 30px;
   padding: 40px 40px;
 }
 .plumber-task{
-  height: 120px;
+  min-height: 120px;
   padding: 25px 40px;
 }
 .service-task{
-  height: 120px;
+  min-height: 120px;
   padding: 25px 40px;
 }
 .task-description{
-  height: 50px;
+  min-height: 50px;
   padding: 25px 40px;
 }
 .line{
@@ -108,15 +110,28 @@ header{
 .image-container{
   display: flex;
   justify-content: space-around;
-  /*padding: 20px 0px 0px;*/
+  padding: 10px 0px 0px;
   height: 100px;
+
+}.service-type-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .image-item{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
-  height: 100px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+}
+.image-item img{
+margin: auto;
+}
+.image-description{
+  margin: auto;
 }
 .task{
   display: flex;
@@ -156,21 +171,22 @@ header{
   background-color: white;
 }
 .task-description > textarea{
+  margin: 10px;
   height: 100%;
   width: 100%;
-  border: 0px
-}
-.task-description > textarea :focus {
-  border: 0px
+  border: 0px;
+  outline:none;
 }
 .plumber-task-container{
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
 .plumber-task-item{
   padding: 10px;
   border-radius: 50px;
+  cursor: pointer;
 }
 .active{
-  border: solid;
+  border: solid #4c70fe 1px;
 }
