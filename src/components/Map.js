@@ -11,13 +11,11 @@ const marker = new props.googleMaps.Marker({ icon : icon });
 
   if(props.curentMarker.latLng){
     marker.setPosition(props.curentMarker.latLng);
-    console.log(marker);
     }
 
   const addMarker = (event, map) => {
     marker.setPosition(event.latLng);
     props.setLatLng(event.latLng);
-    console.log(props);
   };
 
   return(<GoogleMap

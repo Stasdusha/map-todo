@@ -19,9 +19,17 @@ export const SET_CURENT_TASK_ADITTION_TYPE = 'SET_CURENT_TASK_ADITTION_TYPE';
 //Установка описания  текущей задачи
 export const SET_CURENT_TASK_DESCRIPTION = 'SET_CURENT_TASK_DESCRIPTION';
 
+//редактирование  текущей задачи
+export const EDIT_TASK = 'EDIT_TASK';
+
+//удаление  задачи задачи
+export const DELETE_TASK = 'DELETE_TASK';
 
 //Создание новой задачи
 export const CREATE_TASK = 'CREATE_TASK';
+
+//Загрузка списка задач
+export const SET_TASK_LIST = 'SET_TASK_LIST';
 
 //Текущщее местоположения для центровки карты
 export const CURENT_POSITION = {

@@ -7,9 +7,9 @@ import TaskList from './../components/TaskList';
 import EditTaskComponent from './../components/EditTaskComponent';
 import { SET_CURENT_MARKER } from './../constants/constant';
 import getAdress from './../services/locationDetrminer';
+import fireWorker from './../services/firebaseWorker';
 
  const App =(props)=> {
-
 
    const setLatLng =(latLng)=>{
      getAdress(latLng)

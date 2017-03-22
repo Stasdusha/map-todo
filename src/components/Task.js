@@ -14,7 +14,7 @@ const Task =(props)=> {
          { props.task.description }. </div>
         <div>
           <button className='button-blue' onClick={()=> props.editTask(props.task)}>EDIT</button>
-          <button className='button-wite' >DELETE</button>
+          <button className='button-wite' onClick={()=> props.deleteTask(props.task)} >DELETE</button>
         </div>
        </div>
    );

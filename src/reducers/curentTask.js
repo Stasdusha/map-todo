@@ -3,6 +3,7 @@ import {SET_CURENT_TASK,
    SET_CURENT_TASK_DESCRIPTION,
    SET_CURENT_TASK_ADITTION_TYPE} from './../constants/constant'
 
+
 export default function curentTask(state = {}, action) {
   switch (action.type) {
     case SET_CURENT_TASK:

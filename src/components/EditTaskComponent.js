@@ -6,9 +6,11 @@ import ServiceType from './editorComponents/ServiceType';
 import AdditionalTasks from './editorComponents/AdditionalTasks';
 import TaskDescription from './editorComponents/TaskDescription';
 import Line from './editorComponents/Line';
-import  structs  from './../structs/structs'
+import  structs  from './../structs/structs';
+import fireWorker from './../services/firebaseWorker';
 import { SET_CURENT_TASK,
         CREATE_TASK,
+        EDIT_TASK,
         SET_CURENT_TASK_SERVICE_TYPE,
         SET_CURENT_TASK_DESCRIPTION,
         SET_CURENT_TASK_ADITTION_TYPE } from './../constants/constant';
@@ -17,12 +19,19 @@ import { SET_CURENT_TASK,
 const EditTaskComponent =(props)=> {
 
   const createNewTask =()=>{
-    const newTask = props.curentTask;
-    newTask.id = props.tasks.length + 1;
-    newTask.marker = props.curentMarker;
-    newTask.date = new Date();
-    props.createTask(newTask);
-    props.setTask({});
+    console.log(props.curentTask);
+    if(!props.curentTask.id){
+        const newTask = props.curentTask;
+        newTask.id = props.tasks.length + 1;
+        console.log(props.curentMarker);
+        newTask.marker = props.curentMarker;
+        newTask.date = new Date();
+        fireWorker.createOrEditTask(newTask).then(props.createTask(newTask));
+        props.setTask({});
+      }else{
+        fireWorker.createOrEditTask(props.curentTask).then(props.editTask(props.curentTask));
+      }
+
   };
 
   const setServiceType = (type) =>{
@@ -79,5 +88,8 @@ export default connect(state => ({
     setAdittionType: (adittionType) => {
       dispatch({ type: SET_CURENT_TASK_ADITTION_TYPE, adittionType: adittionType })
     },
+    editTask: (task) => {
+      dispatch({ type: EDIT_TASK, task: task})
+    }
   })
 )(EditTaskComponent);
