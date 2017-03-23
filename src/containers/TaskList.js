@@ -1,8 +1,9 @@
 import React from "react";
-import NewTask from "./NewTask";
-import Task from "./Task";
+import NewTask from "./../components/NewTask";
+import Task from "./../components/Task";
 import { connect } from 'react-redux';
 import fireWorker from './../services/firebaseWorker';
+import _ from 'lodash';
 import { SET_CURENT_TASK, SET_CURENT_MARKER,
         DELETE_TASK, SET_TASK_LIST } from './../constants/constant';
 
@@ -17,9 +18,9 @@ class TaskList extends React.Component {
     this.props.setTask(activeTask);
   };
 
-   setMarker(marcer){
-    if(!this.props.curentTask.active){
-      this.props.setMarker(marcer)
+   setMarker(marker){
+    if(!this.props.curentTask.active && marker){
+      this.props.setMarker(marker)
     }
   };
 
@@ -32,14 +33,14 @@ class TaskList extends React.Component {
 
   componentDidMount(){
     fireWorker.getTasks().then((tasks)=>{
-      console.log(tasks.val().map((t, index) => t))
+      this.props.setTaskList(_.map(tasks.val(),(v) => v));
     });
   }
 
   render(){
     return (
          <div className='task-list'>
-           { this.props.curentMarker.latLng ? <NewTask setCurentTask={ this.setCurentTask.bind(this)}/> :"" }
+           { this.props.curentMarker.adress ? <NewTask setCurentTask={ this.setCurentTask.bind(this)}/> :"" }
            { this.props.tasks.map((task, index)=>{
              return(
              <Task key={index} task={task} setMarker={ ()=>this.setMarker(task.marker) } editTask={ this.props.setTask }
@@ -66,7 +67,7 @@ export default connect(state => ({
       dispatch({ type: DELETE_TASK, task: task})
     },
     setTaskList: (tasks) => {
-      dispatch({ type: SET_TASK_LIST, task: tasks})
+      dispatch({ type: SET_TASK_LIST, tasks: tasks})
     }
   })
 )(TaskList);

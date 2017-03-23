@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux'
-import ResultTask from './editorComponents/ResultTask';
-import LocationTask from './editorComponents/LocationTask';
-import ServiceType from './editorComponents/ServiceType';
-import AdditionalTasks from './editorComponents/AdditionalTasks';
-import TaskDescription from './editorComponents/TaskDescription';
-import Line from './editorComponents/Line';
+import ResultTask from './../components/editorComponents/ResultTask';
+import LocationTask from './../components/editorComponents/LocationTask';
+import ServiceType from './../components/editorComponents/ServiceType';
+import AdditionalTasks from './../components/editorComponents/AdditionalTasks';
+import TaskDescription from './../components/editorComponents/TaskDescription';
+import Line from './../components/editorComponents/Line';
 import  structs  from './../structs/structs';
 import fireWorker from './../services/firebaseWorker';
 import { SET_CURENT_TASK,
@@ -19,19 +19,16 @@ import { SET_CURENT_TASK,
 const EditTaskComponent =(props)=> {
 
   const createNewTask =()=>{
-    console.log(props.curentTask);
     if(!props.curentTask.id){
         const newTask = props.curentTask;
-        newTask.id = props.tasks.length + 1;
-        console.log(props.curentMarker);
+        newTask.id = fireWorker.getId();
         newTask.marker = props.curentMarker;
-        newTask.date = new Date();
+        newTask.date = new Date().toLocaleString();
         fireWorker.createOrEditTask(newTask).then(props.createTask(newTask));
-        props.setTask({});
-      }else{
+    }else{
         fireWorker.createOrEditTask(props.curentTask).then(props.editTask(props.curentTask));
-      }
-
+    }
+    props.setTask({});
   };
 
   const setServiceType = (type) =>{

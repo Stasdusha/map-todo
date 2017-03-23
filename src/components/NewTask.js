@@ -4,7 +4,7 @@ const NewTask =(props)=> {
 
   return (
        <div className='new-task' onClick={props.setCurentTask}>
-         <span className='new-task-text'>+ NEW TASK</span>
+         <span className='new-task__text'>+ NEW TASK</span>
        </div>
    );
 }

@@ -3,19 +3,20 @@ import { connect } from 'react-redux'
 
 import Map from './../components/Map';
 import Header from './../components/Header';
-import TaskList from './../components/TaskList';
-import EditTaskComponent from './../components/EditTaskComponent';
+import TaskList from './TaskList';
+import EditTaskComponent from './EditTaskComponent';
 import { SET_CURENT_MARKER } from './../constants/constant';
 import getAdress from './../services/locationDetrminer';
-import fireWorker from './../services/firebaseWorker';
 
  const App =(props)=> {
 
    const setLatLng =(latLng)=>{
+     console.log(latLng);
      getAdress(latLng)
      .then((adress)=>{
         props.setMarker({
-          latLng : latLng,
+          lat : latLng.lat(),
+          lng : latLng.lng(),
           adress : adress
         })}
     )
@@ -32,7 +33,6 @@ import fireWorker from './../services/firebaseWorker';
       </div>
   );
 }
-
 
 export default connect(state => ({
     curentMarker: state.curentMarker,

@@ -1,8 +1,6 @@
 import { createStore } from 'redux'
 import rootReducer from '../reducers'
 
-import fireWorker from './../services/firebaseWorker';
-
 
 
 const configureStore = (initialState) =>{

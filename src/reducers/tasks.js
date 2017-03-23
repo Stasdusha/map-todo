@@ -5,7 +5,7 @@ export default function tasks(state = [], action) {
   switch (action.type) {
 
     case SET_TASK_LIST:
-      return [...action.tasks];
+      return [...state, ...action.tasks];
 
     case CREATE_TASK:
       return [...state, action.task];

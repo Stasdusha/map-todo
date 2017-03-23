@@ -12,11 +12,12 @@ const db = firebase.database();
 
 const fireWorker = {
 
+  getId : ()=>{
+    return db.ref('tasks/').push().key
+  },
+
   createOrEditTask : (task)=>{
-    task.marker = null;
-    return db.ref('tasks/'+task.id).set({
-      task: task
-    });
+    return db.ref('tasks/'+task.id).set(task);
   },
 
   deleteTask : (task)=>{
